@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Individual E-Portfolio - Muhammad Shah Fauzan Bin Iswan</title>
+    <style>
+        /* Manchester City Theme Colors: 
+           Sky Blue: #6CABDD
+           Navy Blue: #1C2C5B
+           White: #FFFFFF
+           Accent Gold: #D4A12A
+        */
+        :root {
+            --mcfc-sky: #6CABDD;
+            --mcfc-navy: #1C2C5B;
+            --mcfc-white: #ffffff;
+            --mcfc-gold: #D4A12A;
+            --bg-color: #f0f4f8; /* Slightly cooler modern gray */
+            --text-main: #2A3B4C;
+            --glow: 0 0 15px rgba(108, 171, 221, 0.4);
+        }
+
+        body {
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            line-height: 1.7;
+        }
+
+        /* Futuristic Header */
+        header {
+            background: linear-gradient(135deg, #0f1833 0%, var(--mcfc-navy) 100%);
+            color: var(--mcfc-white);
+            padding: 80px 20px 60px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            border-bottom: 3px solid var(--mcfc-gold);
+        }
+
+        header::after {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: radial-gradient(circle at 50% 0%, rgba(108, 171, 221, 0.2) 0%, transparent 70%);
+            pointer-events: none;
+        }
+
+        .profile-pic {
+            width: 160px;
+            height: 160px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 4px solid var(--mcfc-sky);
+            box-shadow: var(--glow);
+            margin-bottom: 20px;
+            position: relative;
+            z-index: 1;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .profile-pic:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 25px rgba(108, 171, 221, 0.7);
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 2.8em;
+            letter-spacing: 2px;
+            font-weight: 700;
+            text-transform: uppercase;
+        }
+
+        header p {
+            font-size: 1.1em;
+            margin-top: 15px;
+            font-weight: 300;
+            color: #d1e3f8;
+        }
+
+        .academic-badge {
+            display: inline-block;
+            background: rgba(212, 161, 42, 0.1);
+            color: var(--mcfc-gold);
+            padding: 8px 20px;
+            border-radius: 30px;
+            border: 1px solid var(--mcfc-gold);
+            font-weight: 600;
+            margin-top: 25px;
+            letter-spacing: 1px;
+            box-shadow: 0 0 10px rgba(212, 161, 42, 0.2);
+        }
+
+        /* Glassmorphism Navigation */
+        nav {
+            background-color: rgba(28, 44, 91, 0.85);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        nav ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        nav ul li a {
+            display: block;
+            color: var(--mcfc-white);
+            text-decoration: none;
+            padding: 18px 25px;
+            font-size: 0.9em;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: all 0.3s ease;
+        }
+
+        nav ul li a:hover {
+            color: var(--mcfc-sky);
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        /* Main Content Styling */
+        .container {
+            max-width: 1050px;
+            margin: 50px auto;
+            padding: 0 20px;
+        }
+
+        section {
+            background-color: var(--mcfc-white);
+            border-radius: 12px;
+            padding: 40px;
+            margin-bottom: 40px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.04);
+            border: 1px solid rgba(108, 171, 221, 0.2);
+            transition: transform 0.3s ease;
+        }
+
+        section:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.08);
+            border-color: var(--mcfc-sky);
+        }
+
+        h2 {
+            color: var(--mcfc-navy);
+            font-size: 1.8em;
+            display: flex;
+            align-items: center;
+            margin-top: 0;
+            margin-bottom: 25px;
+        }
+
+        h2::before {
+            content: '';
+            display: inline-block;
+            width: 8px;
+            height: 24px;
+            background-color: var(--mcfc-sky);
+            margin-right: 12px;
+            border-radius: 4px;
+        }
+
+        h3 {
+            color: var(--mcfc-sky);
+            font-weight: 600;
+            margin-top: 30px;
+        }
+
+        ul {
+            padding-left: 20px;
+            list-style-type: square;
+        }
+
+        ul li::marker {
+            color: var(--mcfc-sky);
+        }
+
+        /* Grid Layouts */
+        .grid-2 {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+        }
+
+        .card {
+            background: var(--bg-color);
+            padding: 30px;
+            border-radius: 8px;
+            border: 1px solid rgba(28, 44, 91, 0.05);
+            transition: all 0.3s ease;
+        }
+
+        .card:hover {
+            background: #ffffff;
+            box-shadow: var(--glow);
+            border-color: var(--mcfc-sky);
+        }
+
+        /* Modern Timeline */
+        .timeline {
+            border-left: 2px solid rgba(108, 171, 221, 0.3);
+            padding-left: 30px;
+            margin-left: 10px;
+            margin-top: 20px;
+        }
+
+        .timeline-item {
+            margin-bottom: 30px;
+            position: relative;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -37px;
+            top: 4px;
+            width: 12px;
+            height: 12px;
+            background-color: var(--mcfc-white);
+            border-radius: 50%;
+            border: 3px solid var(--mcfc-sky);
+            box-shadow: var(--glow);
+        }
+
+        /* Project Image Styling */
+        .project-img {
+            width: 100%;
+            max-width: 800px;
+            height: auto;
+            border-radius: 8px;
+            margin-top: 20px;
+            border: 1px solid rgba(0,0,0,0.1);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .project-img:hover {
+            transform: scale(1.02);
+        }
+
+        /* Minimalist Footer */
+        footer {
+            background-color: #0f1833;
+            color: rgba(255, 255, 255, 0.6);
+            text-align: center;
+            padding: 30px 20px;
+            margin-top: 60px;
+            font-size: 0.9em;
+            border-top: 2px solid var(--mcfc-navy);
+        }
+
+        @media (max-width: 768px) {
+            .grid-2 {
+                grid-template-columns: 1fr;
+            }
+            header h1 {
+                font-size: 2em;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <img src="passport.jpg" alt="Muhammad Shah Fauzan Bin Iswan" class="profile-pic">
+        
+        <h1>Muhammad Shah Fauzan Bin Iswan</h1>
+        <p><strong>Software Developer (Security-Focused)</strong><br>
+        Bachelor of Computer Science (Internet Computing)<br>
+        Universiti Sultan Zainal Abidin (UniSZA)</p>
+        <div class="academic-badge">Current CGPA: 3.90 | GPA: 3.81 | Dean's List</div>
+    </header>
+
+    <nav>
+        <ul>
+            <li><a href="#exploration">Career Exploration</a></li>
+            <li><a href="#skills">Skills Assessment</a></li>
+            <li><a href="#development">Career Plan</a></li>
+            <li><a href="#evidence">Evidence of Learning</a></li>
+            <li><a href="#reflection">Personal Reflection</a></li>
+        </ul>
+    </nav>
+
+    <div class="container">
+        
+        <section id="exploration">
+            <h2>Career Exploration</h2>
+            <h3>Target Role: Software Developer (Security-focused)</h3>
+            <p><strong>Job Responsibilities:</strong> As a security-focused software developer, the primary responsibility is to design, write, and test code while ensuring it is immune to vulnerabilities. This involves integrating security protocols during the software development lifecycle (SDLC), conducting code reviews, and patching potential exploits before deployment.</p>
+            <p><strong>Relevance to Modern Cybersecurity:</strong> In today's digital landscape, network firewalls are no longer enough. Many modern cyberattacks target the application layer. By focusing on application security from the ground up, security-focused developers act as the first line of defense, preventing data breaches, SQL injections, and unauthorized access within the software itself.</p>
+        </section>
+
+        <section id="skills">
+            <h2>Personal Skills Assessment</h2>
+            <div class="grid-2">
+                <div class="card">
+                    <h3>Current Skills</h3>
+                    <p><strong>Technical Skills:</strong></p>
+                    <ul>
+                        <li>Web Development (HTML, Frontend Design)</li>
+                        <li>Backend Programming (PHP, Java)</li>
+                        <li>Frameworks (Laravel)</li>
+                        <li>Database Management (MySQL)</li>
+                    </ul>
+                    <p><strong>Soft Skills:</strong></p>
+                    <ul>
+                        <li>Strong adherence to instructions and teamwork</li>
+                        <li>Hardworking and diligent</li>
+                        <li>Highly articulate and communicative</li>
+                    </ul>
+                </div>
+                <div class="card">
+                    <h3>Industry Requirements vs. Current Skills</h3>
+                    <p><strong>Industry Requirements:</strong> The industry expects developers to have strong foundational programming, knowledge of OWASP Top 10 vulnerabilities, experience with secure authentication methods, and familiarity with automated security testing tools.</p>
+                    <p><strong>Gap Analysis:</strong> My current capabilities in full-stack web development (PHP, Laravel, MySQL) and Java provide a solid architectural foundation. I excel at building functional web systems. However, to fully bridge the gap to industry security standards, I need to expand my knowledge beyond rule-based algorithms to include formalized secure coding frameworks and advanced penetration testing techniques.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="development">
+            <h2>Career Development Plan</h2>
+            
+            <h3>Tools & Certifications</h3>
+            <ul>
+                <li><strong>Current Tools Learned:</strong> Wireshark and Autopsy (utilized during Capture The Flag events).</li>
+                <li><strong>Target Certifications:</strong> CompTIA Security+ to validate foundational cybersecurity knowledge, and AWS Certified Security to secure cloud-based applications.</li>
+            </ul>
+
+            <h3>Career Timeline</h3>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <strong>Short-term Goal (1-2 Years):</strong> Graduate with top academic honors. Secure an internship exclusively within the private sector to gain fast-paced, real-world industry experience. Implement strict security protocols into my existing PHP/Laravel projects.
+                </div>
+                <div class="timeline-item">
+                    <strong>Long-term Goal (3-5 Years):</strong> Attain a mid-to-senior level role as a Security-Focused Software Developer within a leading private tech company. Lead development on secure web infrastructure and IoT service platforms.
+                </div>
+            </div>
+        </section>
+
+        <section id="evidence">
+            <h2>Evidence of Learning</h2>
+            
+            <h3>Academic Excellence</h3>
+            <p>Consistently achieved Top Dean's List status for all semesters. Current metrics: GPA 3.92, CGPA 3.80.</p>
+
+            <h3>Completed Project</h3>
+            <ul>
+                <li><strong>MathLearn+ (Final Year Project):</strong> A gamified educational platform built with the Laravel framework, PHP backend, HTML frontend, and MySQL database. It utilizes rule-based algorithms and incorporates core gamification elements like leaderboards, XP levels, and achievement badges.</li>
+            </ul>
+            
+            <img src="mathlearn.png" alt="MathLearn+ Frontpage Screenshot" class="project-img">
+
+            <h3>Workshops & Competitions</h3>
+            <ul>
+                <li><strong>Hackathon Participant:</strong> Actively competed in a hackathon organized by Universiti Sultan Zainal Abidin (UniSZA).</li>
+                <li><strong>Capture The Flag (CTF) UniSZA x UMT:</strong> Participated in a collaborative cybersecurity challenge, successfully utilizing network analysis and digital forensics tools like Wireshark and Autopsy to solve security puzzles.</li>
+            </ul>
+        </section>
+
+        <section id="reflection">
+            <h2>Personal Reflection</h2>
+            
+            <p><strong>Chosen Company:</strong> SNS Network</p>
+
+            <p><strong>Why do I want to work for this company?</strong><br>
+            I am specifically targeting opportunities within the private sector, and SNS Network stands out as a premier technology provider. The company offers the exact technical job scope I am looking for, providing an environment where I can actively apply my web development and security skills on impactful, enterprise-level projects.</p>
+
+            <p><strong>What value can I bring?</strong><br>
+            I bring a highly competitive spirit rooted in healthy competition. I strive to push myself and my team to deliver the best possible solutions, ensuring high standards in both code quality and security.</p>
+
+            <p><strong>Why should SNS Network hire me?</strong><br>
+            You should hire me because I am exceptionally diligent and highly adaptable. The tech industry requires constant evolution, and I possess both the foundational technical knowledge to contribute immediately and the eagerness to learn new, complex technologies quickly to keep the company ahead of the curve.</p>
+
+            <p><strong>What skills make me suitable for this job?</strong><br>
+            My proficiency in full-stack web development (PHP, Laravel, HTML, Java, and MySQL) combined with my hands-on exposure to network analysis tools (Wireshark, Autopsy) positions me perfectly to develop software that is both highly functional and structurally secure.</p>
+
+            <p><strong>What are my strengths and weaknesses?</strong><br>
+            My greatest strengths are my soft skills: I am a very hardworking, articulate communicator who excels at following complex instructions. My primary weakness is that I am naturally introverted and quiet in new environments. However, I am actively stepping out of my comfort zone and working to become more vocal, proactive, and engaged in collaborative team settings.</p>
+        </section>
+
+    </div>
+
+    <footer>
+        <p>&copy; 2026 Muhammad Shah Fauzan Bin Iswan - E-Portfolio prepared for CSA30203 Special Topics in Computer Network Security</p>
+    </footer>
+
+</body>
+</html>
